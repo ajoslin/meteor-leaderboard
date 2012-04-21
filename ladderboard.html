@@ -1,0 +1,72 @@
+<head>
+	<title>ladderboard</title>
+</head>
+
+<body>
+	<h1>Global Ladder</h1>
+	{{> leaderboard}}
+</body>
+
+<template name="leaderboard">
+	<div>
+		<table class="table-striped table">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Tournaments Won</th>
+					<th>Tournament Points</th>
+					<th>Reputation Points</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each entries}}
+					<tr>
+						{{> entry}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+		{{#if isAdmin}}
+			<a href="#" id="addnew">Add New</a>
+		{{/if}}
+		<hr />
+		{{#if isAdmin}}
+			<a class="btn" id="logout">Logout</a>
+		{{else}}
+			<a href="#" id="auth">Login</a>
+			<br />
+			<div id="login-form" style="display:none;">
+				<input id="login-text" placeholder="Username" autofocus>
+				<input id="password-text" type="password" placeholder="Password">
+				<br />
+				<a class="btn" href="#" id="submit-login">Submit</a>
+			</div>
+			<div id="error-text" style="display:none; color:red; font-weight:bold;">
+			</div>
+		{{/if}}
+	</div>
+</template>
+
+
+<template name="entry">
+	<div>
+		{{#if editing}}
+			<form id="edit-form" action="#">
+				<td><input class="input-small" autofocus id="input-name" type="text" value="{{name}}"></td>
+				<td><input class="input-small" id="input-wins" type="text" value="{{wins}}"></td>
+				<td><input class="input-small" id="input-points" type="text" value="{{points}}"></td>
+				<td><input class="input-small" id="input-rep" type="text" value="{{rep}}"></td>
+				<td><a href="#" id="save">Save</a></td>
+			</form>
+		{{else}}
+			<td>{{name}}</td>
+			<td>{{wins}}</td>
+			<td>{{points}}</td>
+			<td>{{rep}}</td>
+			{{#if isAdmin}}
+				<td><a href="#" id="edit">Edit</a></td>
+				<td><a href="#" id="delete">Delete</a></td>
+			{{/if}}
+		{{/if}}
+	</div>
+</template>

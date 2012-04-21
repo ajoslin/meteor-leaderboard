@@ -1,4 +1,8 @@
-ladderboard
-===========
+meteor-leaderboard
+==================
 
-A ladderboard written in meteor
+A small leaderboard written with [meteor](http://meteor.com).
+
+Demo available at [ladder.meteor.com]()
+
+Just a simple app I made for a friend, also helped me learn Meteor.  It's actually pretty secure.
